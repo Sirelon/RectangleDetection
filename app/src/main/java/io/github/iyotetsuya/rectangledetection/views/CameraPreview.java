@@ -47,8 +47,22 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         NoBlank // Scale to the size that no side is smaller than the parent
     }
 
+    public CameraPreview(Context context) {
+        super(context);
+        init();
+    }
+
     public CameraPreview(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
+    }
+
+    public CameraPreview(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init();
+    }
+
+    private void init() {
         mHolder = getHolder();
         mHolder.addCallback(this);
         mLayoutMode = LayoutMode.NoBlank;
@@ -73,7 +87,6 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
         mPreviewSizeList = cameraParams.getSupportedPreviewSizes();
         mPictureSizeList = cameraParams.getSupportedPictureSizes();
     }
-
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
